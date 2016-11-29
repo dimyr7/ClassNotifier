@@ -5,7 +5,7 @@ var math402 = "http://courses.illinois.edu/cisapp/explorer/schedule/2017/Spring/
 var math441 = "http://courses.illinois.edu/cisapp/explorer/schedule/2017/Spring/MATH/441.xml?mode=cascade"
 
 var twilio = require('twilio')
-data= require('./info.json');
+data= require('./info.js');
 var accountSid = data.accountSid;
 var authToken = data.authToken;
 var twilioPhone = data.twilioPhone;
