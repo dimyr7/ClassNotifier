@@ -31,15 +31,6 @@ request(math441, function(error, response, body){
 					});
 				}
 			}
-			if(!found){
-				client.messages.create({
-					body: "Still no classes found",
-					to: myPhone,
-					from: twilioPhone
-				}, function(err, message){
-					console.log(message.sid);
-				});
-			}
 		});
 	}
 	else{
