@@ -10,7 +10,7 @@ var authToken = data.authToken;
 var twilioPhone = data.twilioPhone;
 var myPhone = data.myPhone;
 client = new twilio.RestClient(accountSid, authToken)
-function checkAvailability(dept, num){
+function checkAvailability(dept, num, ignore){
 	var url = prefix + dept + "/" + num + ".xml?mode=cascade";
 	request(url, function(error, response, body){
 		if(!error && response.statusCode == 200){
@@ -20,7 +20,7 @@ function checkAvailability(dept, num){
 				for(var i = 0; i < sections.length; i++){
 					var sect = sections[i]
 						var statusSect = sect.enrollmentStatus[0]
-						if(statusSect != 'Closed'){
+						if(statusSect != 'Closed' && ignore.indexOf(sect['$'].id) < 0 ){
 							found = true;
 							var message = dept + num + " - " +  sect['$'].id;
 							console.log(message)
@@ -51,6 +51,12 @@ function checkAvailability(dept, num){
 	});
 }
 
-checkAvailability("MATH", "441")
-checkAvailability("MATH", "403")
+checkAvailability("MATH", "417", ["38000"]) // Abstract algebra
+checkAvailability("MATH", "441", []) // Differential equations
+checkAvailability("MATH", "444", []) // Elemetary real analysis
+checkAvailability("MATH", "446", []) // Applied complex variables
+checkAvailability("MATH", "447", []) // Real variables
+
+
+
 
