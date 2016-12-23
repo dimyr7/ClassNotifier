@@ -40,6 +40,7 @@ function checkAvailability(dept, num, ignore){
 			});
 		}
 		else{
+			console.log(response.statusCode)
 			client.messages.create({
 				body: "Something went wrong with ClassNotifier",
 				to: myPhone,
@@ -52,11 +53,7 @@ function checkAvailability(dept, num, ignore){
 }
 
 checkAvailability("MATH", "417", ["38000"]) // Abstract algebra
-checkAvailability("MATH", "441", []) // Differential equations
-checkAvailability("MATH", "444", []) // Elemetary real analysis
-checkAvailability("MATH", "446", []) // Applied complex variables
-checkAvailability("MATH", "447", []) // Real variables
-
-
-
-
+checkAvailability("MATH", "444", ["38024"]) 		// Elemetary real analysis
+checkAvailability("MATH", "446", []) 		// Applied complex variables
+checkAvailability("MATH", "447", []) 		// Real variables
+checkAvailability("CS", "555", []) 			// Numerical methods for PDEs
